@@ -34,18 +34,17 @@ def auto_canny(image, sigma=0.33):
     return edged
 
 
-# Definição de parametros
+# Parameters definition
 dist = [0]
 pos =''
 x = []
 y = []
 
-known_width = 6.5 #Width in cm of the radius of the circunference
-wpix = 116 #Inicial width in pixels of the radius of the circunference
+known_width = 6.5 #Diameter in cm of the circunference
+wpix = 116 #Inicial diameter in cm of the circunference
 d = 34 #Inicial dist from the camera to the circunference in cm
 
 
-#def distance_to_camera (known_width, focal_width, wpix):
 focal_dist = (wpix * d) / known_width
              
 
@@ -80,10 +79,10 @@ while(True):
             cv2.circle(bordas_color,(i[0], i[1]),2,(0,0,255),3)
             #print (focal_dist, known_width, wpix)
             
-            #calculo da distancia
+            #Calculating distance from paper to camera
             dist[0] = (known_width * focal_dist) / (2 * i[2])
             
-            #verificação de posicionamento
+            #Orientation verification
             valorX = i[0]
             valorY = i[1]
             x.append(valorX)
